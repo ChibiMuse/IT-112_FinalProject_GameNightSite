@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Games</h1>
+<table class='table'>
+ <tr>
+     <th>Title</th>
+    <!-- <th>Type(s)</th>
+     <th>Genre(s)</th>-->
+     <th>Min Players</th>
+     <th>Max Players</th>
+     <th>Game Length</th>
+     <th>Age (and up)</th>
+ </tr>
+ {% for g in games_list %}
+   <tr>
+       <td>{{ g.gametitle }}</td>
+     <!--  <td>{{ g.gametype }}</td>
+       <td>{{ g.gamegenre }}</td>-->
+       <td>{{ g.minplayers }}</td>
+       <td>{{ g.maxplayers }}</td>
+       <td>{{ g.playtime }}</td>
+       <td>{{ g.minage }}</td>
+   </tr>
+
+ {% endfor %}
+
+
+</table>
+
+
+{% endblock %}

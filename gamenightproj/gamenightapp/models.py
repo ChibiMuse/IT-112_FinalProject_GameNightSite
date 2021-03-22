@@ -40,7 +40,7 @@ class Games(models.Model):
     maxplayers=models.IntegerField()
     playtime=models.DurationField()
     minage=models.IntegerField()
-    publishdate=models.DateField()
+    publishdate=models.CharField(max_length=4)
     publisher=models.ForeignKey(Publishers, on_delete=models.DO_NOTHING)
 
     def __str__(self):
@@ -57,7 +57,7 @@ class Inventory(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.game + self.user + '-' + self.lastplayeddate
+        return '{self.user}:{self.game}'.format(self=self)
     
     class Meta:
         db_table='inventory'
@@ -69,7 +69,7 @@ class FriendsList(models.Model):
     frienddate=models.DateField()
 
     def __str__(self):
-        return self.user + '-' + self.friend + '_' + self.frienddate
+        return '{self.user}\'s friendship with {self.friend}'.format(self=self)
     
     class Meta:
         db_table='FriendList'
